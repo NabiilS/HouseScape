@@ -4,7 +4,11 @@ Il nous permet de récupérer des données de site tel que seLoger.com, leboncoi
 
 ## Prérequis
 - Python 3.x
-- Les bibliothèques suivantes : pandas, BeautifulSoup, selenium, jupyter et d'autres seront ajouté à la suite.
+- Les bibliothèques suivantes : 
+	- Pandas, 
+	- BeautifulSoup, 
+	- Selenium, 
+	- Jupyter
 
 ## Installation
 1. Clonez ce dépôt sur votre ordinateur local (git clone https://github.com/NabiilS/HouseScape.git)
