@@ -114,6 +114,10 @@ def main():
   #pages = get_page()
   #save_pages(pages)
   results = parse_pages()
+  print("--------------------------------------------------------")
+  print("--- LANCEMENT DU BOT DE WEBSCRAPPING SUR SELOGER.COM ---")
+  print("-------------- NOMBRE DE PAGES VOULU : 10 --------------")
+  print("--------------------------------------------------------")
   print(results)
 main()
 url = "https://www.logic-immo.com/vente-immobilier/options/grouplocalities=1_0,21_0,12_0,8_0,84_1,11_0,13_0/groupprptypesids=1,2/page=1"

@@ -13,11 +13,13 @@ Il nous permet de récupérer des données de site tel que seLoger.com, leboncoi
 ## Installation
 1. Clonez ce dépôt sur votre ordinateur local (git clone https://github.com/NabiilS/HouseScape.git)
 2. Ouvrir le dossier avec Visual Studio Code
-2. Installez les bibliothèques requises en exécutant les commandes suivantes: 
+3. Ajouter python dans les variables d'environnement PATH (ajouter script et libs)
+4. Installez les bibliothèques requises en exécutant les commandes suivantes: 
 	- pip install pandas
 	- pip install bs4
 	- pip install selenium
 	- pip install jupyter 
+	- pip install seaborn
 
 3. Une fois que Jupyter est installé, ajouter jupyter aux variables d'environnements.
 Procédure pour windows: 
