@@ -41,52 +41,99 @@ def get_page(count=10,headless=False):
 def save_pages(pages):
   os.makedirs("data", exist_ok=True)
   for page_nb, page in enumerate(pages):
-    with open(f"data/page_{page_nb}.html", "wb") as f_out: 
+    with open(f"data/page={page_nb}.html", "wb") as f_out: 
       f_out.write(page)
 
 def parse_pages():
-  pages_paths = os.listdir("data")
+    pages_paths = os.listdir("data")
 
-  results = pd.DataFrame()
-  results = pd.DataFrame()
-  pages_paths = os.listdir("data")
-  for pages_path in pages_paths:
-      with open(os.path.join("data", pages_path), "rb") as f_in:
-          page = f_in.read().decode("utf-8")
-          results = results.append(parse_page(page))
-  return results
+    # Filter out non-HTML files
+    pages_paths = [f for f in pages_paths if f.endswith(".html")]
+
+    results = pd.DataFrame()
+    for pages_path in pages_paths:
+        with open(os.path.join("data", pages_path), "rb") as f_in:
+            page = f_in.read().decode("utf-8")
+            results = results.append(parse_page(page))
+    return results
+
 
 def parse_page(page):
+    soup = BeautifulSoup(page,"html.parser")
+    result = pd.DataFrame()
+    
+    # Extract price
+    price_tag = soup.find("span", class_="announceDtlPrice")
+    price = price_tag.text.strip() if price_tag else None
+    result["price"] = [price]
+    
+    # Extract type
+    prop_type_tag = soup.find("span", class_="announceDtlInfosPropertyType")
+    prop_type = prop_type_tag.text.strip() if prop_type_tag else None
+    result["type"] = [prop_type]
+    
+    # Extract address
+    address_tag = soup.find("div", class_="announcePropertyLocation")
+    address = address_tag.text.strip() if address_tag else None
+    result["address"] = [address]
+    
+    # Extract surface
+    surface_tag = soup.find("span", class_="announceDtlInfos announceDtlInfosArea")
+    surface = surface_tag.text.strip() if surface_tag else None
+    result["surface"] = [surface]
+    
+    # Extract bedroom count
+    bedrooms_tag = soup.find("span", class_="announceDtlInfos announceDtlInfosNbRooms bullet")
+    bedrooms = bedrooms_tag.text.strip() if bedrooms_tag else None
+    result["bedrooms"] = [bedrooms]
+    
+    return result
 
-  soup = BeautifulSoup(page,"html.parser")
-  result = pd.DataFrame()
 
-  result["price (€)"] = [
-     clean_price(tag) for tag in soup.find_all(attrs={"class": "Price__PriceWrapper-sc-1g9fitq-1 cHTIJq"})
-  ]
 
-  result["type"] = [
-      clean_type(tag) for tag in soup.find_all(attrs={"class": "ContentZone__Title-wghbmy-4 clOuRb"})
-  ]
+# def parse_page(page):
 
-  result["adresse"] = [
-      clean_postal_code(tag) for tag in soup.find_all(attrs={"class": "ContentZone__Address-wghbmy-0 bZvSwz"})
-  ]
+#   soup = BeautifulSoup(page,"html.parser")
+#   result = pd.DataFrame()
 
-  areas = soup.find_all(attrs={"class": "ContentZone__TagsLine-wghbmy-6 cNYziv"})
-  result["description"] = [tag.text.strip() for tag in areas]
+#   result["price (€)"] = [
+#      clean_price(tag) for tag in soup.find_all(attrs={"class": "announceDtlPrice"})
+#   ]
+
+#   result["type"] = [
+#       clean_type(tag) for tag in soup.find_all(attrs={"class": "announceDtlInfosPropertyType"})
+#   ]
+
+#   result["adresse"] = [
+#       clean_postal_code(tag) for tag in soup.find_all(attrs={"class": "announcePropertyLocation"})
+#   ]
+
+#   # areas = soup.find_all(attrs={"class": "ContentZone__TagsLine-wghbmy-6 cNYziv"})
+#   # result["description"] = [tag.text.strip() for tag in areas]
+
+
+#   m2 = soup.find_all(attrs={"class": "announceDtlInfos announceDtlInfosArea"})
+#   result["surface"] = [tag.text.strip() for tag in m2] 
+
+#   nbrePiece = soup.find_all(attrs={"class": "announceDtlInfos announceDtlInfosNbRooms bullet"})
+#   result["nbrePiece"] = [tag.text.strip() for tag in nbrePiece]   
      
 
-  # areas = soup.find_all(attrs={"class": "announceDtlPrice"})
-  # areas = soup.find_all(attrs={"class": "Price__PriceContainer-sc-1g9fitq-0 knHjrC"})
-  # #areas = soup.find_all(attrs={"class": "sc-fHxwqH hAXnvi"})
-  # result["price"] = [tag.text.strip() for tag in areas]
-  return result
+#   # areas = soup.find_all(attrs={"class": "announceDtlPrice"})
+#   # areas = soup.find_all(attrs={"class": "Price__PriceContainer-sc-1g9fitq-0 knHjrC"})
+#   # #areas = soup.find_all(attrs={"class": "sc-fHxwqH hAXnvi"})
+#   # result["price"] = [tag.text.strip() for tag in areas]
+#   return result
 
 def clean_price(tag):
     text = tag.text.strip()
-    price = int(text.replace("€", "").replace(" ", ""))
+    price = int(text.replace("€", "").replace(" ", "").replace("\xa0", ""))
     return price
+
+# def clean_price(tag):
+#     text = tag.text.strip()
+#     price = int(text.replace("€", "").replace(" ", ""))
+#     return price
 
 def clean_type(tag):
     text = tag.text.strip()
@@ -116,7 +163,7 @@ def main():
   results = parse_pages()
   print("--------------------------------------------------------")
   print("--- LANCEMENT DU BOT DE WEBSCRAPPING SUR SELOGER.COM ---")
-  print("-------------- NOMBRE DE PAGES VOULU : 10 --------------")
+  print("-------------- NOMBRE DE PAGES VOULU : 500 --------------")
   print("--------------------------------------------------------")
   print(results)
 main()
