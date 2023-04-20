@@ -37,5 +37,5 @@ Ou alors on peut vérifier l'emplacement de l'installation avec pip show jupyter
 ## Contribuer
 Nous sommes toujours ouverts aux contributions et suggestions pour améliorer ce projet. N'hésitez pas à soumettre des suggestions afin que nous puissions améliorer notre projet de groupe :)
 
-Souleymane - Soufiane- Nabil
+Souleymane - Soufiane - Yanice - Nabil 
 
