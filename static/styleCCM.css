@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+header {
+  background-color: #3b3b3b;
+  padding: 20px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  color: #fff;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menu li {
+  margin-left: 20px;
+}
+
+.menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+section.hero {
+  background-color: #a98759;
+  padding: 50px 0;
+}
+
+section.hero .container {
+  margin: 0 auto;
+}
+
+section.contact {
+  background-color: #846d4f;
+  padding: 50px 0;
+}
+
+section.contact .container {
+  margin: 0 auto;
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.container {
+  padding: 0 20px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+    
+.btn{
+	width: 100%;
+	padding: 0.5rem 1rem;
+	background-color: #3b3b3b;
+	color: #fff;
+	font-size: 1.1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+}
+.centered-title {
+  text-align: center;
+}
+p {
+  margin-bottom: 10px; /* Ajoute un espace de 10 pixels en bas de chaque paragraphe */
+}
+p {
+  margin-bottom: 20px; /* Ajoute un espace de 10 pixels en bas de chaque paragraphe */
+}
+.centered-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage</title>
+  <link rel="stylesheet" type="text/css" href="styleHP.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">HOUSESCAPE</div>
+      <ul class="menu">
+        <li><a href="HomePage.html">Accueil</a></li>
+        <li><a href="Contactez-nous.html">Nous-Contacter</a></li>
+		<li><a href="CommentCaMarche.html">Comment ça marche ?</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Bienvenue dans notre site</h1>
+     	 <p>Obtenez une estimation précise de la valeur de votre bien immobilier en quelques clics sur notre site spécialisé en estimation immobilière.</p>
+    <img src = "HouseScapeLogo.png" width="50%"/>
+	</div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <h2>Estimer votre bien immobilier</h2>
+      <form action="submit-form.php" method="POST">
+        <input type="text" name="name" placeholder="Type">
+        <input type="adress" name="adress" placeholder="Adress">
+        <input type="float" name="surface" placeholder="Surface">
+        <input type="float" name="bedrooms" placeholder="Bedrooms">
+        <button class="btn">Estimer</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+  </footer>
+</body>
+</html>

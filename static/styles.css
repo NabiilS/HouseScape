@@ -1,0 +1,596 @@
+@import url("https ://fonts.googleapis.com/css?family=Poppins:700");
+
+
+
+
+:root {
+
+
+
+
+    --black: Orgba(0, 0, 0, 1);
+
+
+
+
+    --masala: Orgba(59, 59, 59, 1);
+
+
+
+
+    --font-size-m: 24px;
+
+
+
+
+    --font-size-1: 40px;
+
+
+
+
+    -font-family-poppins: "Poppins"
+
+
+
+
+}
+
+
+
+
+
+
+
+.poppins-bold-masala-24px {
+
+
+
+
+    color: var (--masala);
+
+
+
+
+    font-family: var(--font-family-poppins);
+
+
+
+
+    font-size: var (--font-size-m);
+
+
+
+
+    font-weight: 700;
+
+
+
+
+    font-style: normal;
+
+
+
+
+}
+
+
+
+
+.homepage {
+
+
+
+
+    align-items: flex-start;
+
+
+
+
+    background: linear-gradient(180deg, rgb(95, 84, 69)0%, rgb(169, 135, 89)100%);
+
+
+
+
+    background-color: rgba(255, 255, 255, 1);
+
+
+
+
+    background-size: 100% 100%;
+
+
+
+
+}
+
+
+
+
+
+
+
+.hidden,
+
+
+
+
+.hidden * {
+
+
+
+
+    pointer-events: none;
+
+
+
+
+    visibility: hidden;
+
+
+
+
+}
+
+
+
+
+.overlap-group {
+
+
+
+
+    background: linear-gradient(188deg, rgba(255, 253.94, 253.94, 8.56) 0%, rgba(255, 255, 255, 0.16) 100%);
+
+
+
+
+    border-radius: 30px;
+
+
+
+
+    flex-direction: column;
+
+
+
+
+    margin-left: 1px;
+
+
+
+
+    margin-top: 112px;
+
+
+
+
+    min-height: 800px;
+
+
+
+
+    padding: 64px 141px;
+
+
+
+
+    width: 1195px;
+
+
+
+
+}
+
+
+
+
+
+
+.homepage .overlap {
+
+
+
+
+    align-items: flex-start;
+
+
+
+
+    display: flex;
+
+
+
+
+}
+
+
+
+
+
+
+.flex-row-1 {
+
+
+
+
+    align-items: flex-start;
+
+
+
+
+    display: flex;
+
+
+
+
+    gap: 296px;
+
+
+
+
+    height: 36px;
+
+
+
+
+    margin-top: 63px;
+
+
+
+
+    min-width: 519px;
+
+
+
+
+}
+
+
+
+
+.surface {
+
+
+
+
+    letter-spacing: 0;
+
+
+
+
+    line-height: normal;
+
+
+
+
+    min-height: 36px;
+
+
+
+
+    min-width: 96px;
+
+
+
+
+}
+
+
+
+
+
+
+.bedrooms {
+
+
+
+
+    letter-spacing: 0;
+
+
+
+
+    line-height: normal;
+
+
+
+
+    min-height: 36px;
+
+
+
+
+}
+
+
+
+
+
+
+.input-box-container {
+
+
+
+
+    align-items: flex-start;
+
+
+
+
+    display: flex;
+
+
+
+
+    gap: 44px;
+
+
+
+
+    margin-top: 1px;
+
+
+
+
+    min-width: 740px;
+
+
+
+
+}
+
+
+
+
+
+
+.input-box {
+
+
+
+
+    background: linear-gradient(188deg, rgba(255, 253.94, 253.94, 8.56) 8%, rgba(255, 255, 255, 0.16) 100%);
+
+
+
+
+    border: 1px solid;
+
+
+
+
+    border-color: transparent;
+
+
+
+
+    border-image: linear-gradient(to bottom, rgb(185.94, 165.85, 138.68), rgb(183.06, 86.53, 63.98)) 1;
+
+
+
+
+    border-radius: 5px;
+
+
+
+
+    height: 60px;
+
+
+
+
+    width: 348px;
+
+
+
+
+}
+
+
+
+
+.title {
+
+
+
+
+    color: var(--masala);
+
+
+
+
+    font-family: var(--font-family-poppins);
+
+
+
+
+    font-weight: 708;
+
+
+
+
+    font-size: var(--font-size-1);
+
+
+
+
+    letter-spacing: 0;
+
+
+
+
+    line-height: normal;
+
+
+
+
+    min-height: 68px;
+
+
+
+
+}
+
+
+
+
+.flex-row {
+
+
+
+
+    display: flex;
+
+
+
+
+    align-items: flex-start;
+
+
+
+
+    gap: 331px;
+
+
+
+
+    height: 36px;
+
+
+
+
+    margin-top: 33px;
+
+
+
+
+    min-width: 478px;
+
+
+
+
+}
+
+
+
+
+.Ladress {
+
+
+
+
+    letter-spacing: 0;
+
+
+
+
+    line-height: normal;
+
+
+
+
+    min-height: 36px;
+
+
+
+
+}
+
+
+
+
+
+
+.type {
+
+
+
+
+    letter-spacing: 0;
+
+
+
+
+    line-height: normal;
+
+
+
+
+    min-height: 25px;
+
+
+
+
+    min-width: 61px;
+
+
+
+
+    font-weight: bold;
+
+
+
+
+    color: var(--bold-masala);
+
+
+
+
+}
+
+
+
+
+.overlap-group1 {
+
+    background-size: 100% 100%;
+
+
+
+
+    height: 68px;
+
+
+
+
+    margin-top: 73px;
+
+
+
+
+    min-width: 740px;
+
+
+
+
+    padding: 11px 323px;
+
+
+
+
+}
+
+
+
+
+.estimer {
+
+
+
+
+    letter-spacing: 0;
+
+
+
+
+    line-height: normal;
+
+
+
+
+    min-height: 36px;
+
+
+
+
+}

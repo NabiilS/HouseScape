@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Homepage</title>
+  <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='styleHP.css') }}">
+  <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='styleCN.css') }}">
+  <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='styleCCM.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">HOUSESCAPE</div>
+      <ul class="menu">
+        <li><a href="HomePage.html">Accueil</a></li>
+        <li><a href="Contactez-nous.html">Nous-Contacter</a></li>
+		<li><a href="CommentCaMarche.html">Comment ça marche ?</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Bienvenue dans notre site</h1>
+     	 <p>Obtenez une estimation précise de la valeur de votre bien immobilier en quelques clics sur notre site spécialisé en estimation immobilière.</p>
+    <img src = "{{ url_for('static', filename='HouseScapeLogo.png') }}" width="50%"/>
+	</div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <h2>Estimer votre bien immobilier</h2>
+      <form action="{{url_for('predict')}}" method="POST">
+
+        <div>
+
+            <label for="type">Type (0 = Appartement | 1 = Maison | 2 = Studio | 3 = Villa)</label>
+
+            <div>
+
+                <input type="number" name="type" placeholder="Entrez le type du bien ">
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <label for="code_postal">Code postal</label>
+
+            <div>
+
+                <input type="number" name="code_postal" placeholder="Entrez le code postal">
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <label for="surface">Surface</label>
+
+            <div>
+
+                <input type="number" name="surface" placeholder="Entrez la Surface">
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <label for="nb_pieces">Chambres</label>
+
+            <div>
+
+                <input type="number" name="nb_pieces" placeholder="Entrez le nombre de chambre">
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div>
+
+                <button type="submit">
+
+                    Estimer
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+    <div>
+
+      <p>house price = {{data}}</p>   
+
+    </div>
+
+    </div>
+  </section>
+
+  <footer>
+  </footer>
+</body>
+</html>
