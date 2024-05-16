@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <title >CommentCaMarche</title>
-  <link rel="stylesheet" type="text/css" href="styleCCM.css">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment ça marche - HouseScape</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleHomePage.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="navbar">
       <div class="logo">HOUSESCAPE</div>
       <ul class="menu">
-        <li><a href="HomePage.html">Accueil</a></li>
-        <li><a href="Contactez-nous.html">Nous-Contacter</a></li>
-		<li><a href="CommentCaMarche.html">Comment ça marche ?</a></li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+        <li><a href="/contactez-nous">Nous-Contacter</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="hero">
     <div class="container">
-      <h1 class="centered-title">Comment ça marche ?</h1>
-     	 <p1>Notre site d'estimation immobilière utilise un algorithme pour estimer la valeur d'un bien immobilier. Voici comment cela fonctionne : <br></p>
-		 <p>1. Collecte des données : Le site collecte des informations sur le bien immobilier, telles que sa localisation, sa taille, son nombre de pièces, son type, son état général, et d'autres caractéristiques pertinentes. 
-		 </p>
-		 <p>2. Analyse comparative : L'algorithme de notre site analyse ensuite les données collectées et les compare à d'autres biens similaires qui ont sur des sites de vente comme Leboncoin, logic-immo, etc.
-		 Il cherche des biens comparables en termes de taille, de localisation et d'autres caractéristiques.</p>
-		 <p>3. Modèle statistique : Notre site d'estimation immobilière utilise un modèle statistique pour évaluer la valeur d'un bien. </p>
-		 <p>4. Résultat de l'estimation : Une fois que toutes les données ont été analysées, notre site génère une estimation de la valeur du bien immobilier. Cela est exprimé sous forme d'une fourchette de prix.</p>
-    <img src = "HouseScapeLogo.png" width="50%" class="centered-image"/>
-	</div>
+      <h1>Comment ça marche ?</h1>
+      <p>Découvrez comment notre outil en ligne peut vous aider à estimer la valeur de votre bien immobilier rapidement et précisément.</p>
+    </div>
   </section>
+
+  <section class="content">
+    <div class="container">
+      <h2>Simple et rapide</h2>
+      <p>Entrez les informations de votre bien, comme le type, le code postal, la surface, et le nombre de chambres, puis cliquez sur "Estimer". Notre système utilisera des algorithmes avancés pour vous fournir une estimation fiable en quelques secondes.</p>
+      
+      <h2>Précis et fiable</h2>
+      <p>Nous utilisons les données du marché immobilier actualisées pour assurer que nos estimations sont précises et reflètent les vraies valeurs du marché.</p>
+      
+      <h2>Entièrement en ligne</h2>
+      <p>Tout le processus se fait en ligne sans besoin de visites en personne, vous permettant de connaître la valeur de votre bien où que vous soyez et quand vous le souhaitez.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 HouseScape. Tous droits réservés.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>

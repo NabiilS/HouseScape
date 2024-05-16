@@ -1,111 +1,197 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Homepage</title>
-  <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='styleHP.css') }}">
-  <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='styleCN.css') }}">
-  <link rel='stylesheet' type='text/css' media='screen' href="{{ url_for('static', filename='styleCCM.css') }}">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - HouseScape</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleHomePage.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  </head>
+
 <body>
   <header>
-    <nav>
+    <nav class="navbar">
       <div class="logo">HOUSESCAPE</div>
       <ul class="menu">
-        <li><a href="HomePage.html">Accueil</a></li>
-        <li><a href="Contactez-nous.html">Nous-Contacter</a></li>
-		<li><a href="CommentCaMarche.html">Comment ça marche ?</a></li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+        <li><a href="/contactez-nous">Nous-Contacter</a></li>
       </ul>
     </nav>
   </header>
 
+  <section class="logo">
+    <div class="logo-container">
+      {% if data %}
+        <section class="estimation-value">
+          <h1>D'après nos estimations, votre bien est estimé à {{ data }} €</h1>
+        </section>
+        <div id='map' style='width: 600px; height: 450px; margin: auto;'></div>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="/" class="submit-btn submit-btn-retry">Refaire l'estimation...</a>
+        </div>
+      {% else %}
+        <img src="{{ url_for('static', filename='HouseScapeLogo.png') }}" alt="Logo HouseScape">
+      {% endif %}
+    </div>
+  </section>
+  
+  {% if data %}
+  {% else %}
   <section class="hero">
     <div class="container">
-      <h1>Bienvenue dans notre site</h1>
-     	 <p>Obtenez une estimation précise de la valeur de votre bien immobilier en quelques clics sur notre site spécialisé en estimation immobilière.</p>
-    <img src = "{{ url_for('static', filename='HouseScapeLogo.png') }}" width="50%"/>
-	</div>
+ 
+      <h1>Bienvenue sur HouseScape</h1>
+      <p>Votre partenaire de confiance pour estimer la valeur de votre propriété rapidement et avec précision.</p>
+      {% endif %}
+    </div>
   </section>
 
-  <section class="contact">
-    <div class="container">
-      <h2>Estimer votre bien immobilier</h2>
-      <form action="{{url_for('predict')}}" method="POST">
-
-        <div>
-
-            <label for="type">Type (0 = Appartement | 1 = Maison | 2 = Studio | 3 = Villa)</label>
-
-            <div>
-
-                <input type="number" name="type" placeholder="Entrez le type du bien ">
-
+  {% if not data %}
+    <section class="contact">
+      <div class="container">
+        <h2>Estimez la valeur de votre bien immobilier</h2>
+        <p>Utilisez notre outil intuitif ci-dessous pour obtenir une estimation instantanée de votre propriété.</p>
+        <form id="estimate-form" action="{{ url_for('predict') }}" method="POST">
+          <div class="input-group">
+            <label>Type</label>
+            <div class="type-buttons">
+              <button type="button" class="type-btn" data-value="0">Appartement</button>
+              <button type="button" class="type-btn" data-value="1">Maison</button>
+              <button type="button" class="type-btn" data-value="2">Studio</button>
+              <button type="button" class="type-btn" data-value="3">Villa</button>
             </div>
-
-        </div>
-
-        <div>
-
+            <input type="hidden" name="type" id="type-input">
+          </div>
+          <div class="input-group">
             <label for="code_postal">Code postal</label>
-
-            <div>
-
-                <input type="number" name="code_postal" placeholder="Entrez le code postal">
-
-            </div>
-
-        </div>
-
-        <div>
-
+            <input type="number" id="code_postal" name="code_postal" placeholder="Entrez le code postal">
+          </div>
+          <div class="input-group">
             <label for="surface">Surface</label>
-
-            <div>
-
-                <input type="number" name="surface" placeholder="Entrez la Surface">
-
-            </div>
-
-        </div>
-
-        <div>
-
-            <label for="nb_pieces">Chambres</label>
-
-            <div>
-
-                <input type="number" name="nb_pieces" placeholder="Entrez le nombre de chambre">
-
-            </div>
-
-        </div>
-
-        <div>
-
-            <div>
-
-                <button type="submit">
-
-                    Estimer
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </form>
-    <div>
-
-      <p>house price = {{data}}</p>   
-
-    </div>
-
-    </div>
-  </section>
+            <input type="number" id="surface" name="surface" placeholder="Entrez la Surface">
+          </div>
+          <div class="input-group">
+            <label for="nb_pieces">Chambre(s)</label>
+            <input type="number" id="nb_pieces" name="nb_pieces" placeholder="Entrez le nombre de chambre">
+          </div>
+          <button type="submit" class="submit-btn">Lancer l'estimation!</button>
+        </form>
+      </div>
+    </section>
+  {% endif %}
 
   <footer>
   </footer>
-</body>
+
+  </body>
 </html>
+
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoibmFiaWlsIiwiYSI6ImNsdzkzZzhkbTJjZG0ya21xN3Z2d2p1eDcifQ.VtQvXeYxaSYqF02vgp5Ndw';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [2.333333, 48.866667], 
+    zoom: 5
+  });
+
+  function initializeMap() {
+    var postalCode = "{{ code_postal|default('', true) }}"; 
+    if (postalCode) {
+      fetchCoordinatesAndZoom(postalCode);
+    }
+  }
+
+  function fetchCoordinatesAndZoom(postalCode) {
+    var url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${postalCode}.json?country=FR&access_token=${mapboxgl.accessToken}`;
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        if (data.features && data.features.length > 0) {
+          var center = data.features[0].center;
+          map.flyTo({
+            center: center,
+            zoom: 13
+          });
+        } else {
+          alert("Aucune donnée de localisation trouvée pour ce code postal en France.");
+        }
+      })
+      .catch(error => {
+        console.error('Erreur lors de la géolocalisation:', error);
+        alert("Erreur lors de la recherche du code postal.");
+      });
+  }
+
+  map.on('load', initializeMap);
+
+  document.getElementById('estimate-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var postalCode = document.getElementById('code_postal').value;
+    fetchCoordinatesAndZoom(postalCode);
+  });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    function activateButton(type) {
+      var buttons = document.querySelectorAll('.type-btn');
+      buttons.forEach(button => {
+        if (button.dataset.value === type) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+      document.getElementById('type-input').value = type;
+    }
+
+    var currentType = document.getElementById('type-input').value;
+    if (currentType) {
+      activateButton(currentType);
+    }
+
+    document.querySelectorAll('.type-btn').forEach(button => {
+      button.onclick = function() {
+        activateButton(this.dataset.value);
+      };
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function checkForm() {
+      const type = document.getElementById('type-input').value;
+      const postalCode = document.getElementById('code_postal').value;
+      const surface = document.getElementById('surface').value;
+      const pieces = document.getElementById('nb_pieces').value;
+      const submitBtn = document.querySelector('.submit-btn');
+
+      submitBtn.disabled = !(type && postalCode && surface && pieces);
+    }
+
+
+
+    document.getElementById('estimate-form').addEventListener('input', checkForm);
+    
+    function setTypeValue(value) {
+      document.getElementById('type-input').value = value;
+      checkForm();
+    }
+
+    document.querySelectorAll('.type-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.type-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        setTypeValue(this.dataset.value);
+      });
+    });
+
+    checkForm();
+  });
+</script>

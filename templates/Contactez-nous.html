@@ -1,34 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-	<title>Contactez-nous</title>
-	<link rel="stylesheet" type="text/css" href="styleCN.css">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactez-nous - HouseScape</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styleHomePage.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .input-group textarea {
+      width: 100%; 
+      padding: 10px; 
+      box-sizing: border-box; 
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">HOUSESCAPE</div>
-      <ul class="menu">
-        <li><a href="HomePage.html">Accueil</a></li>
-        <li><a href="Contactez-nous.html">Nous-Contacter</a></li>
-		<li><a href="CommentCaMarche.html">Comment ça marche ?</a></li>
-      </ul>
-    </nav>
-  </header>
-	<div class="container">
-		<div class="contact-box">
-			<div class="left"></div>
-			<div class="right">
-				<h2>Nous contacter</h2>
-				<input type="text" class="field" placeholder="Votre nom">
-				<input type="text" class="field" placeholder="Votre Email">
-				<input type="text" class="field" placeholder="Votre numero de telephone">
-				<textarea placeholder="Message" class="field"></textarea>
-				<button class="btn">Envoyer</button>
-			</div>
-		</div>
-	</div>
+	<header>
+		<nav class="navbar">
+		  <div class="logo">HOUSESCAPE</div>
+		  <ul class="menu">
+			<li><a href="/">Accueil</a></li>
+			<li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+			<li><a href="/contactez-nous">Nous-Contacter</a></li>
+		  </ul>
+		</nav>
+	  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Contactez-nous</h1>
+      <p>Nous sommes là pour répondre à toutes vos questions.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <form id="contact-form">
+        <div class="input-group">
+          <label for="first-name">Prénom:</label>
+          <input type="text" id="first-name" name="first-name" required>
+        </div>
+        <div class="input-group">
+          <label for="last-name">Nom:</label>
+          <input type="text" id="last-name" name="last-name" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="input-group">
+          <label for="phone">Numéro de téléphone:</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="input-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="8" required></textarea>
+        </div>
+        <button type="button" class="submit-btn">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 HouseScape. Tous droits réservés.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
