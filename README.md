@@ -20,6 +20,7 @@ Il nous permet de récupérer des données de site tel que seLoger.com, leboncoi
 	- pip install selenium
 	- pip install jupyter 
 	- pip install seaborn
+ 	- pip install scikit-learn
 
 3. Une fois que Jupyter est installé, ajouter jupyter aux variables d'environnements.
 Procédure pour windows: 
